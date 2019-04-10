@@ -11,18 +11,20 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
 
+  columnsToDisplay = ['title', 'url', 'created_at', 'author'];
   articlesList: IHit[] = [];
 
   constructor( private homeService: HomeService ) {}
 
   ngOnInit() {
+    this.getNews();
   }
 
   getNews() {
     setInterval(() =>
       this.homeService.sendRequest()
-      .subscribe((data: IResponse) => this.articlesList = this.articlesList.concat(data.hits))
-    , 10000);
+      .subscribe((data: IResponse) => this.articlesList = data.hits)
+    , 1000);
   }
 }
 

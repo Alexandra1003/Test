@@ -6,7 +6,7 @@ export class HomeService {
   constructor(private http: HttpClient) {}
 
   sendRequest() {
-      return  this.http.get('https://hn.algolia.com/api/v1/search_by_date?tags=story')
+      return  this.http.get('https://hn.algolia.com/api/v1/search_by_date?tags=story');
   }
 }
 
